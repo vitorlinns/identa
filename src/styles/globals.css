@@ -20,8 +20,10 @@
   --color-secondary: #073B32;
   --color-text: #101816;
   --color-white: #FFFFFF;
+  --color-bg: #F6F8F7;
 
   /* Estados e efeitos derivados exclusivamente da paleta. */
+  --color-divider: color-mix(in srgb, var(--color-white) 20%, transparent);
   --color-border: color-mix(in srgb, var(--color-secondary) 15%, transparent);
   --color-surface-hover: color-mix(in srgb, var(--color-primary) 6%, var(--color-white));
   --color-overlay: color-mix(in srgb, var(--color-text) 10%, transparent);
@@ -48,4 +50,9 @@
   h1 { font-size: 2em; font-weight: 700; margin-block: .67em; }
   h2 { font-size: 1.5em; font-weight: 700; margin-block: .83em; }
   p { margin-block: 1em; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
 }

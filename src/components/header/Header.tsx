@@ -1,3 +1,4 @@
+import { TbPlus } from 'react-icons/tb'
 import { useEffect, useRef, useState } from 'react'
 import { Link, useLocation } from 'react-router'
 import { site } from '../../data/site'
@@ -79,7 +80,7 @@ export function Header() {
           aria-label={open ? 'Fechar menu' : 'Abrir menu'}
           onClick={() => setOpen((current) => !current)}
         >
-          <span aria-hidden="true" className={`text-2xl font-medium leading-none transition-transform duration-300 motion-reduce:transition-none ${open ? 'rotate-45' : 'rotate-0'}`}>+</span>
+          <TbPlus aria-hidden="true" className={`size-6 transition-transform duration-300 motion-reduce:transition-none ${open ? 'rotate-45' : 'rotate-0'}`} />
         </button>
         {open && <div className="fixed inset-x-0 top-22 bottom-0 bg-(--color-overlay) min-[1151px]:hidden" aria-hidden="true" onClick={() => setOpen(false)} />}
         <div id="header-mobile-menu" className={`fixed inset-x-4 top-25 mx-auto max-h-[calc(100dvh-7rem)] max-w-88 overflow-y-auto rounded-[2rem] bg-(--color-white) p-5 shadow-[0_10px_20px_var(--color-shadow-menu)] transition-[opacity,transform,visibility] duration-300 motion-reduce:transition-none min-[1151px]:hidden ${open ? 'visible translate-x-0 opacity-100' : 'invisible translate-x-4 opacity-0'}`} inert={!open} aria-hidden={!open}>
