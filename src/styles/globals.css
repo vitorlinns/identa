@@ -1,22 +1,51 @@
-:root {
-  font-family: system-ui, sans-serif;
-  color: #202020;
-  background: #fff;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
+@import "tailwindcss";
+
+/* Remove a paleta nativa: as utilidades de cor usam apenas a Identa. */
+@theme {
+  --color-*: initial;
+  --font-sans: 'Golos Text', system-ui, sans-serif;
 }
 
-* { box-sizing: border-box; }
-body { margin: 0; min-width: 320px; }
-html { scroll-padding-top: 7rem; }
-#root { min-height: 100svh; display: flex; flex-direction: column; padding-top: 5.5rem; }
-a { color: inherit; }
-button, input, textarea, select { font: inherit; }
-img { max-width: 100%; height: auto; }
-.container { width: min(100% - 2rem, 72rem); margin-inline: auto; }
-.site-footer { padding-block: 1.5rem; }
-main { flex: 1; padding-block: 3rem; }
-.skip-link { position: fixed; z-index: 100; top: -5rem; left: 1rem; padding: 1rem; background: #fff; }
-.skip-link:focus { top: 1rem; }
-:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+@font-face {
+  font-family: 'Golos Text';
+  src: url('/fonts/GolosText-Variable.ttf') format('truetype');
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+}
+
+:root {
+  /* Paleta Identa: todas as cores do site partem destes tokens. */
+  --color-primary: #16C784;
+  --color-secondary: #073B32;
+  --color-text: #101816;
+  --color-white: #FFFFFF;
+
+  /* Estados e efeitos derivados exclusivamente da paleta. */
+  --color-border: color-mix(in srgb, var(--color-secondary) 15%, transparent);
+  --color-surface-hover: color-mix(in srgb, var(--color-primary) 6%, var(--color-white));
+  --color-overlay: color-mix(in srgb, var(--color-text) 10%, transparent);
+  --color-shadow-soft: color-mix(in srgb, var(--color-text) 5%, transparent);
+  --color-shadow-menu: color-mix(in srgb, var(--color-secondary) 12%, transparent);
+
+}
+
+@layer base {
+  :root {
+    font-family: var(--font-sans);
+    color: var(--color-text);
+    background: var(--color-white);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    line-height: normal;
+  }
+  html { scroll-padding-top: 7rem; }
+  body { min-width: 320px; }
+  #root { min-height: 100svh; display: flex; flex-direction: column; padding-top: 5.5rem; }
+  :focus-visible { outline: 2px solid var(--color-secondary); outline-offset: 4px; }
+  /* Mantém a apresentação provisória das páginas após o reset do Tailwind. */
+  h1 { font-size: 2em; font-weight: 700; margin-block: .67em; }
+  h2 { font-size: 1.5em; font-weight: 700; margin-block: .83em; }
+  p { margin-block: 1em; }
+}
